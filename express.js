@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const mustacheExpress = require('mustache-express');
 let robots;
+let robotName;
+let robotJob;
+let robotCompany;
 
 app.engine('mustache', mustacheExpress());
 app.set('views', './views')
@@ -19,8 +22,9 @@ filesystem.readFile('users.json', function(err, contents) {
 });
 
 app.get('/', function(req, res) {
+  //TODO: need to push value of robots to mustache document
   res.render('index', {
-    //TODO: need to push value of robots to mustache document
+    userList: robots.users,
   });
 });
 
