@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+      <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1> Employed Robots! </h1>
+      <ul>
+        {{ #employedUsers }}
+          <li>
+              <img src="{{avatar}}">
+              <span>{{username}}</span>
+              <span>{{name}}</span>
+              <span>{{email}}</span>
+          </li>
+        {{ /employedUsers }}
+      </ul>
+  </body>
+</html>

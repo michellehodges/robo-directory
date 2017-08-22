@@ -1,24 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <title>Robots for Jobs</title>
-    <link rel="stylesheet" href="styles.css">
+      <link rel="stylesheet" href="styles.css">
   </head>
-
   <body>
-    <h1> Welcome to the Robot Job Site </h1>
-    <ul class="container">
-      {{#userList}}
-        <li class="profile-section">
-          <h1 class="robot-name">{{ name }}</h1>
-          <img src="{{ avatar }}" class ="robot-avatar">
-          <span class="robot-details">{{ job }}</span>
-          <span class="robot-details">{{ company }}</span>
-        </li>
-      {{/userList}}
-    </ul>
-    <script src="main.js"></script>
-  </body>
+    <h1> Welcome to Robots Page, Homie. </h1>
 
+      <h2>
+        <a href="/jobless"> Click here for jobless robots. </a>
+      </h2>
+
+      <h2>
+        <a href="/employed"> Click here for employed robots. </a>
+      </h2>
+
+  </body>
 </html>

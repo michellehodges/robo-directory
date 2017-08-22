@@ -1,39 +1,38 @@
-const filesystem = require('fs');
 const express = require('express');
 const app = express();
 const mustacheExpress = require('mustache-express');
-let robots;
-let robotName;
-let robotJob;
-let robotCompany;
 
 app.engine('mustache', mustacheExpress());
-app.set('views', './views')
-app.set('view engine', 'mustache')
+app.set('views', './views');
+app.set('view engine', 'mustache');
+app.use(express.static('views')); 
 
-//PARSE THROUGH THE ROBOT JSON FILE
-filesystem.readFile('users.json', function(err, contents) {
-  robots = JSON.parse(contents);
+let client = require ('mongodb').MongoClient;
+let data = require('./data');
 
-  //A COMFORTING METHOD TO SEE THE CONTENTS OF FILE
-  // for (let i = 0; i < robots.users.length; i++) {
-  //   console.log(`User: ${robots.users[i].name}, Job: ${robots.users[i].job}, Company: ${robots.users[i].company}`);
-  // }
-});
-
-app.get('/', function(req, res) {
-  //TODO: need to push value of robots to mustache document
-  res.render('index', {
-    userList: robots.users,
+client.connect('mongodb://localhost:27017/test', function(err, db) {
+  let robots = db.collection('items');
+  app.get('/', function(req, res) {
+    res.render('index');
   });
-});
 
+  app.get('/jobless', function(req, res) {
+    robots.find({ job: null }).toArray().then(function(robots) {
+      res.render('jobless', {
+        joblessUsers: robots,
+      });
+    });
+  });
 
-//When user is clicked, bring them this information.
-app.get('/users/:userName', function(req, res) {
-  res.send('Welcome to the page of ' + req.params.userName);
-})
+  app.get('/employed', function(req, res) {
+      robots.find({ job: /.+/ }).toArray().then(function(robots) {
+        res.render('employed', {
+          employedUsers: robots,
+        });
+    });
+  });
 
-app.listen(3000, function() {
-  console.log('Mad successes happenin here!')
+  app.listen(3000, function() {
+    console.log('Mad successes happenin here!');
+  });
 });
