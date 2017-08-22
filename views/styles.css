@@ -1,0 +1,40 @@
+.index {
+  text-align: left;
+  font-family: 'Share Tech Mono', monospace;
+  margin-right: 20px;
+  margin-top: 50px;
+}
+
+#main-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+}
+
+.main-page {
+  background-image: url("https://wallpaperlayer.com/img/2015/10/robot-wallpaper-2033-2187-hd-wallpapers.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.roster-list {
+  list-style: none;
+  margin: 2em;
+  text-align: center;
+  border: 2px solid black;
+  padding: 0.25em;
+}
+
+.list-content {
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.results-body {
+  background-color: #ff9900;
+}
+
+ul {
+  display: inline-flex;
+  flex-wrap: wrap;
+}

@@ -2,16 +2,17 @@
 <html>
   <head>
       <link rel="stylesheet" href="styles.css">
+      <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
   </head>
-  <body>
-    <h1> Jobless Robots! </h1>
+  <body class="results-body">
+    <h1 class="index" id="main-title"> Robots free to hire </h1>
       <ul>
         {{#joblessUsers}}
-          <li>
-              <img src="{{avatar}}">
-              <span>{{username}}</span>
-              <span>{{name}}</span>
-              <span>{{email}}</span>
+          <li class="roster-list">
+              <img src="{{avatar}}" class="list-content"><br>
+              <span class="list-content">{{username}}</span><br>
+              <span class="list-content">{{name}}</span><br>
+              <span class="list-content">{{email}}</span>
           </li>
         {{/joblessUsers}}
       </ul>
